@@ -46,15 +46,6 @@ function elit_add_floodlight_tag()
             </noscript>
             <!-- End of DoubleClick Floodlight Tag: Please do not remove -->
 
-            <!-- Tag for Activity Group: KPI, Activity Name: Unique Find A DO (Search Results), Activity ID: 3821579 -->
-            <!-- Expected URL: http://doctorsthatdo.org/find-your-do#search -->
-            
-            <!--
-            Activity ID: 3821579
-            Activity Name: Unique Find A DO (Search Results)
-            Activity Group Name: KPI
-            -->
-            
             <!--
             Start of DoubleClick Floodlight Tag: Please do not remove
             Activity name of this tag: Unique Find A DO (Search Results)
@@ -142,6 +133,28 @@ function elit_add_floodlight_tag()
 
         echo $html;
 
+    } else if (is_front_page()) {
+
+        $html = '
+            <!--
+            Start of DoubleClick Floodlight Tag: Please do not remove
+            Activity name of this tag: Homepage
+            URL of the webpage where the tag is expected to be placed: http://doctorsthatdo.org/
+            This tag must be placed between the <body> and </body> tags, as close as possible to the opening tag.
+            Creation Date: 08/23/2016
+            -->
+            <script type="text/javascript">
+            var axel = Math.random() + "";
+            var a = axel * 10000000000000;
+            document.write(\'<iframe src="https://5128400.fls.doubleclick.net/activityi;src=5128400;type=homep0;cat=homep0;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;ord=1;num=\' + a + \'?" width="1" height="1" frameborder="0" style="display:none"></iframe>\');
+            </script>
+            <noscript>
+            <iframe src="https://5128400.fls.doubleclick.net/activityi;src=5128400;type=homep0;cat=homep0;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;ord=1;num=1?" width="1" height="1" frameborder="0" style="display:none"></iframe>
+            </noscript>
+            <!-- End of DoubleClick Floodlight Tag: Please do not remove -->
+        ';
+
+        echo $html;
     }
 }
 add_action('just_opened_body_tag' , 'elit_add_floodlight_tag');
