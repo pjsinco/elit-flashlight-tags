@@ -3,7 +3,7 @@
 /**
  * Plugin Name: Elit Floodlight Tags
  * Description: Add Floodlight tags
- * Version:     1.0.0
+ * Version:     1.0.1
  * Author:      pjs
  */
 
