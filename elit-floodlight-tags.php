@@ -13,6 +13,22 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
+function elit_floodlight_enqueue_scripts( )
+{
+  if ( ! is_page( 'find-your-do' ) ) {
+    wp_enqueue_script( 
+      'floodlight-tags',
+      plugins_url( '/public/scripts/main.js', __FILE__ ),
+      array( 'jquery' ),
+      false,
+      true
+    );
+  }
+}
+
+add_action('wp_enqueue_scripts' , 'elit_floodlight_enqueue_scripts');
+
+
 /**
  * Add floodlight tags.
  *
@@ -21,10 +37,11 @@ if ( ! defined( 'WPINC' ) ) {
  */
 function elit_add_floodlight_tag()
 {
-  $doDifferenceTitle = 'difference';
-  $videoLibraryTitle = 'video-library';
+  $doDifference = 'difference';
+  $videoLibrary = 'video-library';
+  $findYourDO = 'find-your-do';
 
-  $scripts = array(getFindYourDOScript());
+  $scripts = array();
 
   if (is_home()) {
 
@@ -32,17 +49,22 @@ function elit_add_floodlight_tag()
     // so WP considers it a home page
     array_push($scripts, getHealthLibraryScript());
   
-  } else if (is_page($doDifferenceTitle)) {
+  } else if (is_page($doDifference)) {
 
     array_push($scripts, getDoDifferenceScript());
 
-  } else if (is_page($videoLibraryTitle)) {
+  } else if (is_page($videoLibrary)) {
 
     array_push($scripts, getVideoLibraryScript());
 
   } else if (is_front_page()) {
 
     array_push($scripts, getHomePageScript());
+
+  } else if (is_page($findYourDO)) {
+
+    array_push($scripts, getFindYourDOScript());
+
   }
 
   printScripts($scripts);
