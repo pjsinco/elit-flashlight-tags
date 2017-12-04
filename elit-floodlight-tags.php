@@ -3,7 +3,7 @@
 /**
  * Plugin Name: Elit Floodlight Tags
  * Description: Add Floodlight tags
- * Version:     1.0.3
+ * Version:     1.0.4
  * Author:      pjs
  */
 
@@ -11,23 +11,6 @@
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
-
-
-function elit_floodlight_enqueue_scripts( )
-{
-  if ( ! is_page( 'find-your-do' ) ) {
-    wp_enqueue_script( 
-      'floodlight-tags',
-      plugins_url( '/public/scripts/main.js', __FILE__ ),
-      array( 'jquery' ),
-      false,
-      true
-    );
-  }
-}
-
-//add_action('wp_enqueue_scripts' , 'elit_floodlight_enqueue_scripts');
-
 
 /**
  * Add floodlight tags.
@@ -41,7 +24,7 @@ function elit_add_floodlight_tag()
   $videoLibrary = 'video-library';
   $findYourDO = 'find-your-do';
 
-  $scripts = array();
+  $scripts = array( getEveryPageScript() );
 
   if (is_home()) {
 
@@ -77,25 +60,49 @@ function elit_add_floodlight_tag()
 add_action('just_opened_body_tag' , 'elit_add_floodlight_tag');
 
 
+function getEveryPageScript()
+{
+  $html = '
+    <!--
+    Start of DoubleClick Floodlight Tag: Please do not remove
+    Activity name of this tag: All Pages
+    URL of the webpage where the tag is expected to be placed: http://multiple
+    This tag must be placed between the <body> and </body> tags, as close as possible to the opening tag.
+    Creation Date: 11/28/2017
+    -->
+    <script type="text/javascript">
+    var axel = Math.random() + "";
+    var a = axel * 10000000000000;
+    document.write(\'<iframe src="https://5128400.fls.doubleclick.net/activityi;src=5128400;type=aoa6s0;cat=allpa0;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;ord=\' + a + \'?" width="1" height="1" frameborder="0" style="display:none"></iframe>\');
+    </script>
+    <noscript>
+    <iframe src="https://5128400.fls.doubleclick.net/activityi;src=5128400;type=aoa6s0;cat=allpa0;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;ord=1?" width="1" height="1" frameborder="0" style="display:none"></iframe>
+    </noscript>
+    <!-- End of DoubleClick Floodlight Tag: Please do not remove -->
+  ';
+
+  return $html;
+}
+
 function getDoDifferenceScript()
 {
   $html = '
-      <!--
-      Start of DoubleClick Floodlight Tag: Please do not remove
-      Activity name of this tag: The DO Difference
-      URL of the webpage where the tag is expected to be placed: http://doctorsthatdo.org/difference
-      This tag must be placed between the <body> and </body> tags, as close as possible to the opening tag.
-      Creation Date: 10/21/2015
-      -->
-      <script type="text/javascript">
-      var axel = Math.random() + "";
-      var a = axel * 10000000000000;
-      document.write(\'<iframe src="https://5128400.fls.doubleclick.net/activityi;src=5128400;type=kpirm0;cat=thedo0;ord=1;num=\' + a + \'?" width="1" height="1" frameborder="0" style="display:none"></iframe>\');
-      </script>
-      <noscript>
-      <iframe src="https://5128400.fls.doubleclick.net/activityi;src=5128400;type=kpirm0;cat=thedo0;ord=1;num=1?" width="1" height="1" frameborder="0" style="display:none"></iframe>
-      </noscript>
-      <!-- End of DoubleClick Floodlight Tag: Please do not remove -->
+    <!--
+    Start of DoubleClick Floodlight Tag: Please do not remove
+    Activity name of this tag: The DO Difference
+    URL of the webpage where the tag is expected to be placed: http://doctorsthatdo.org/difference
+    This tag must be placed between the <body> and </body> tags, as close as possible to the opening tag.
+    Creation Date: 10/21/2015
+    -->
+    <script type="text/javascript">
+    var axel = Math.random() + "";
+    var a = axel * 10000000000000;
+    document.write(\'<iframe src="https://5128400.fls.doubleclick.net/activityi;src=5128400;type=kpirm0;cat=thedo0;ord=1;num=\' + a + \'?" width="1" height="1" frameborder="0" style="display:none"></iframe>\');
+    </script>
+    <noscript>
+    <iframe src="https://5128400.fls.doubleclick.net/activityi;src=5128400;type=kpirm0;cat=thedo0;ord=1;num=1?" width="1" height="1" frameborder="0" style="display:none"></iframe>
+    </noscript>
+    <!-- End of DoubleClick Floodlight Tag: Please do not remove -->
   ';
 
   return $html;
@@ -105,40 +112,40 @@ function getDoDifferenceScript()
 function getFindYourDOScript() 
 {
   $html = '
-      <!--
-      Start of DoubleClick Floodlight Tag: Please do not remove
-      Activity name of this tag: Find A DO (Search Results)
-      URL of the webpage where the tag is expected to be placed: http://doctorsthatdo.org/find-your-do#search
-      This tag must be placed between the <body> and </body> tags, as close as possible to the opening tag.
-      Creation Date: 10/21/2015
-      -->
+    <!--
+    Start of DoubleClick Floodlight Tag: Please do not remove
+    Activity name of this tag: Find A DO (Search Results)
+    URL of the webpage where the tag is expected to be placed: http://doctorsthatdo.org/find-your-do#search
+    This tag must be placed between the <body> and </body> tags, as close as possible to the opening tag.
+    Creation Date: 10/21/2015
+    -->
 
-      <script type="text/javascript">
-      var axel = Math.random() + "";
-      var a = axel * 10000000000000;
-      document.write(\'<iframe src="https://5128400.fls.doubleclick.net/activityi;src=5128400;type=kpirm0;cat=finda0;ord=\' + a + \'?" width="1" height="1" frameborder="0" style="display:none"></iframe>\');
-      </script>
-      <noscript>
-      <iframe src="https://5128400.fls.doubleclick.net/activityi;src=5128400;type=kpirm0;cat=finda0;ord=1?" width="1" height="1" frameborder="0" style="display:none"></iframe>
-      </noscript>
-      <!-- End of DoubleClick Floodlight Tag: Please do not remove -->
+    <script type="text/javascript">
+    var axel = Math.random() + "";
+    var a = axel * 10000000000000;
+    document.write(\'<iframe src="https://5128400.fls.doubleclick.net/activityi;src=5128400;type=kpirm0;cat=finda0;ord=\' + a + \'?" width="1" height="1" frameborder="0" style="display:none"></iframe>\');
+    </script>
+    <noscript>
+    <iframe src="https://5128400.fls.doubleclick.net/activityi;src=5128400;type=kpirm0;cat=finda0;ord=1?" width="1" height="1" frameborder="0" style="display:none"></iframe>
+    </noscript>
+    <!-- End of DoubleClick Floodlight Tag: Please do not remove -->
 
-      <!--
-      Start of DoubleClick Floodlight Tag: Please do not remove
-      Activity name of this tag: Unique Find A DO (Search Results)
-      URL of the webpage where the tag is expected to be placed: http://doctorsthatdo.org/find-your-do#search
-      This tag must be placed between the <body> and </body> tags, as close as possible to the opening tag.
-      Creation Date: 08/17/2016
-      -->
-      <script type="text/javascript">
-      var axel = Math.random() + "";
-      var a = axel * 10000000000000;
-      document.write(\'<iframe src="https://5128400.fls.doubleclick.net/activityi;src=5128400;type=kpirm0;cat=uniqu0;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;ord=1;num=\' + a + \'?" width="1" height="1" frameborder="0" style="display:none"></iframe>\');
-      </script>
-      <noscript>
-      <iframe src="https://5128400.fls.doubleclick.net/activityi;src=5128400;type=kpirm0;cat=uniqu0;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;ord=1;num=1?" width="1" height="1" frameborder="0" style="display:none"></iframe>
-      </noscript>
-      <!-- End of DoubleClick Floodlight Tag: Please do not remove -->
+    <!--
+    Start of DoubleClick Floodlight Tag: Please do not remove
+    Activity name of this tag: Unique Find A DO (Search Results)
+    URL of the webpage where the tag is expected to be placed: http://doctorsthatdo.org/find-your-do#search
+    This tag must be placed between the <body> and </body> tags, as close as possible to the opening tag.
+    Creation Date: 08/17/2016
+    -->
+    <script type="text/javascript">
+    var axel = Math.random() + "";
+    var a = axel * 10000000000000;
+    document.write(\'<iframe src="https://5128400.fls.doubleclick.net/activityi;src=5128400;type=kpirm0;cat=uniqu0;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;ord=1;num=\' + a + \'?" width="1" height="1" frameborder="0" style="display:none"></iframe>\');
+    </script>
+    <noscript>
+    <iframe src="https://5128400.fls.doubleclick.net/activityi;src=5128400;type=kpirm0;cat=uniqu0;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;ord=1;num=1?" width="1" height="1" frameborder="0" style="display:none"></iframe>
+    </noscript>
+    <!-- End of DoubleClick Floodlight Tag: Please do not remove -->
   ';
 
   return $html;
