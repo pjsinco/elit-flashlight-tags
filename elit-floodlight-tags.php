@@ -3,7 +3,7 @@
 /**
  * Plugin Name: Elit Floodlight Tags
  * Description: Add Floodlight tags
- * Version:     1.0.3
+ * Version:     1.0.4
  * Author:      pjs
  */
 
@@ -70,16 +70,18 @@ function getEveryPageScript()
     This tag must be placed between the <body> and </body> tags, as close as possible to the opening tag.
     Creation Date: 11/28/2017
     -->
-    <script type=""text/javascript"">
-    var axel = Math.random() + """";
+    <script type="text/javascript">
+    var axel = Math.random() + "";
     var a = axel * 10000000000000;
-    document.write(\'<iframe src=""https://5128400.fls.doubleclick.net/activityi;src=5128400;type=aoa6s0;cat=allpa0;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;ord=\' + a + \'?"" width=""1"" height=""1"" frameborder=""0"" style=""display:none""></iframe>\');
+    document.write(\'<iframe src="https://5128400.fls.doubleclick.net/activityi;src=5128400;type=aoa6s0;cat=allpa0;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;ord=\' + a + \'?" width="1" height="1" frameborder="0" style="display:none"></iframe>\');
     </script>
     <noscript>
-    <iframe src=""https://5128400.fls.doubleclick.net/activityi;src=5128400;type=aoa6s0;cat=allpa0;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;ord=1?"" width=""1"" height=""1"" frameborder=""0"" style=""display:none""></iframe>
+    <iframe src="https://5128400.fls.doubleclick.net/activityi;src=5128400;type=aoa6s0;cat=allpa0;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;ord=1?" width="1" height="1" frameborder="0" style="display:none"></iframe>
     </noscript>
-    <!-- End of DoubleClick Floodlight Tag: Please do not remove -->"
+    <!-- End of DoubleClick Floodlight Tag: Please do not remove -->
   ';
+
+  return $html;
 }
 
 function getDoDifferenceScript()
